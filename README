@@ -1,3 +1,13 @@
 TogoWS REST API test suites
 
 TogoWS <http://togows.dbcls.jp> is an integrated bioinformatics web services contains SOAP and REST services.
+
+
+Usage:
+
+ ruby test-togows-rest-entry-genbank.rb
+
+Licence: MIT
+
+Authors:
+- Mitsuteru Nakao <mn@dbcls.jp>
