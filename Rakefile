@@ -1,5 +1,5 @@
 namespace :create do
-  desc 'Make testcode file with tnamespace=ebi_uniprot TNAMESPACE=UniProt TEntryID=P53_HUMEN TSearchQuery=cancer'
+  desc 'Make testcode file with namespace=ebi_uniprot NAMESPACE=UniProt EntryID=P53_HUMEN SearchQuery=cancer'
   task :testcode do
     tnamespace = ENV['namespace']
     TNAMESPACE = ENV['NAMESPACE']
@@ -14,7 +14,12 @@ end
 namespace :testcode do
   desc 'Create test-togows-rest-ebi-uniprot.rb'
   task :uniprot do
-    sh 'rake create:testcode tnamespace=ebi-uniprot TNAMESPACE=UniProt TEntryID=P53_HUMAN TSearchQuery=cancer'
+    sh 'rake -s create:testcode namespace=ebi-uniprot NAMESPACE=UniProt EntryID=P53_HUMAN SearchQuery=cancer'
+  end
+
+  desc 'Create test-togows-rest-ncbi-pubmed.rb'
+  task :pubmed do
+    sh 'rake -s create:testcode namespace=ncbi-pubmed NAMESPACE=PubMed EntryID=20472643 SearchQuery=togows'
   end
 end
 

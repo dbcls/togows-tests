@@ -5,7 +5,7 @@ require 'test-helper'
 
 
 class TogoWSSearch<%= TNAMESPACE %>Test < Test::Unit::TestCase
-  def test_tnamespace
+  def test_<%= tnamespace.sub("-","_") %>
     assert_404 'http://togows.dbcls.jp/search/<%= tnamespace %>'
   end 
 
@@ -80,7 +80,7 @@ class TogoWSEntry<%= TNAMESPACE %>Test < Test::Unit::TestCase
     assert_400 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>.bad_request'
   end
 
-  def test_<%= tnamespace %>
+  def test_<%= tnamespace.sub("-", '_') %>
     assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>'
   end
 

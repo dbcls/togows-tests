@@ -8,8 +8,8 @@ Usage:
  # Testing ncbi-nucleotide
  ruby test-togows-rest-ncbi-nucleotide.rb
 
- # Creating testcode
- rake create:testcode namespace=ebi-uniprot NAMESPACE=UniProt EntryID=P53_HUMAN SearchQuery=cancer > test-togows-ebi-uniprot.rb
+ # Start to create new testcode
+ rake testcode:pubmed -s > test-togows-rest-ncbi-pubmed.rb
 
 
 Licence: MIT
