@@ -101,13 +101,6 @@ class TogoWSEntry<%= TNAMESPACE %>Test < Test::Unit::TestCase
     assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>.xml'
   end
 
-  def test_definition
-    assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/definition'
-  end
-
-  def test_definition
-    assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/definition.json'
-  end
 
   def test__entry_id
     assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/entry_id'
@@ -115,6 +108,14 @@ class TogoWSEntry<%= TNAMESPACE %>Test < Test::Unit::TestCase
 
   def test__entry_id_in_json
     assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/entry_id.json'
+  end
+
+  def test_definition
+    assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/definition'
+  end
+
+  def test_definition
+    assert_200 'http://togows.dbcls.jp/entry/<%= tnamespace %>/<%= TEntryID %>/definition.json'
   end
 
   def test__seq
