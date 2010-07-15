@@ -1,18 +1,16 @@
 require 'open-uri'
 require 'test/unit'
-
+require 'test-helper'
 
 class TogoWSEntryTest < Test::Unit::TestCase
   def test_namespace
-    @r = open('http://togows.dbcls.jp/entry')
-    assert_equal('200', @r.status.first)
+    assert_200 'http://togows.dbcls.jp/entry'
   end 
 end
 
 class TogoWSSearchTest < Test::Unit::TestCase
   def test_namespace
-    @r = open('http://togows.dbcls.jp/search')
-    assert_equal('200', @r.status.first)
+    assert_200 'http://togows.dbcls.jp/search'
   end 
 end
 

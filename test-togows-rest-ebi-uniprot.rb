@@ -4,8 +4,12 @@ require 'test-helper'
 
 
 class TogoWSSearchUniProtTest < Test::Unit::TestCase
-  def test_search
+  def test_ebi_uniprot
     assert_404 'http://togows.dbcls.jp/search/ebi-uniprot'
+  end 
+
+  def test_uniprot
+    assert_404 'http://togows.dbcls.jp/search/uniprot'
   end 
 
   def test_query
@@ -47,39 +51,84 @@ class TogoWSSearchUniProtTest < Test::Unit::TestCase
   end 
 end
 
+
 class TogoWSEntryUniProtTest < Test::Unit::TestCase
-  def test_fiedls
+  def test_fields
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot?fields'
+  end 
+
+  def test_fields_list
+    list = ['definition', 'entry_id', 'seq']
+    assert_list(list, 'http://togows.dbcls.jp/entry/ebi-uniprot?fields')
   end 
 
   def test_formats
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot?formats'
   end
 
-  def test_ebi_uniprot_not_found
+  def test_formats_list
+    list = ['fasta', 'gff', 'json', 'xml']
+    assert_list(list, 'http://togows.dbcls.jp/entry/ebi-uniprot?formats')
+  end 
+
+  def test_not_found
     assert_404 'http://togows.dbcls.jp/entry/ebi-uniprot/not_found'
   end
-  def test_ebi_uniprot_bad_request
+
+  def test_field_bad_request
     assert_400 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/bad_request'
+  end
+
+  def test_format_bad_request
+    assert_400 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN.bad_request'
   end
 
   def test_ebi_uniprot
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN'
   end
-  def test_ebi_uniprot_in_fasta
+
+  def test_uniprot
+    assert_200 'http://togows.dbcls.jp/entry/uniprot/Q6K043_HUMAN'
+  end
+
+  def test_in_fasta
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN.fasta'
   end
-  def test_ebi_uniprot_in_json
+
+  def test_in_json
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN.json'
   end
-  def test_ebi_uniprot_definition
+
+  def test_in_gff
+    assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN.gff'
+  end
+
+  def test_in_xml
+    assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN.xml'
+  end
+
+  def test_definition
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/definition'
   end
-  def test_ebi_uniprot_entry_id
+
+  def test_definition
+    assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/definition.json'
+  end
+
+  def test__entry_id
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/entry_id'
   end
-  def test_ebi_uniprot_entry_id_in_json
+
+  def test__entry_id_in_json
     assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/entry_id.json'
+  end
+
+  def test__seq
+    assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/seq'
+  end
+
+  def test_seq_in_json
+    assert_200 'http://togows.dbcls.jp/entry/ebi-uniprot/Q6K043_HUMAN/seq.json'
   end
 
 end

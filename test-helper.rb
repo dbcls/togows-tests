@@ -20,3 +20,7 @@ def assert_404(uri)
 end
 
 
+def assert_list(fields_array, uri)
+  @r = open(uri)
+  assert_equal(fields_array, @r.read.split("\n"))
+end
