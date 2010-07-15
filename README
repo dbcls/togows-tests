@@ -5,7 +5,12 @@ TogoWS <http://togows.dbcls.jp> is an integrated bioinformatics web services con
 
 Usage:
 
- ruby test-togows-rest-entry-genbank.rb
+ # Testing ncbi-nucleotide
+ ruby test-togows-rest-ncbi-nucleotide.rb
+
+ # Creating testcode
+ rake create:testcode namespace=ebi-uniprot NAMESPACE=UniProt EntryID=P53_HUMAN SearchQuery=cancer > test-togows-ebi-uniprot.rb
+
 
 Licence: MIT
 
